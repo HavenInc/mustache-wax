@@ -1,0 +1,26 @@
+sudo: required
+dist: trusty
+
+language: node_js
+node_js:
+  - "8"
+
+addons:
+  mariadb: '10.3'
+
+install:
+  - mysql -u root -e 'CREATE DATABASE haven_ci;'
+  - mysql -u root -e "GRANT ALL ON haven_ci.* TO 'haven-dbo'@'localhost' IDENTIFIED BY '$PROTEUS_MYSQL_CI_PW';"
+  - mysql -u root -e 'FLUSH PRIVILEGES;'
+  - npm install -g gulp bower mocha
+  - npm install
+
+notifications:
+  slack: haven:vPbVAZQdPBLzt8qAzuvwvUzz
+
+script:
+  - npm test
+
+branches:
+  only:
+  - master
