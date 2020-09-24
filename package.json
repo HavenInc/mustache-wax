@@ -26,12 +26,8 @@
     "build:dev": "webpack --env.NODE_ENV=dev",
     "test": "mocha --reporter spec test/spec.js"
   },
-  "peerDependencies": {
-    "mustache": "^0.8.1"
-  },
   "dependencies": {
-  },
-  "devDependencies": {
+    "mustache": "^0.8.1",
     "mocha": "^6.1.4",
     "chai": "^4.2.0",
     "webpack-cli": "^3.3.0",
